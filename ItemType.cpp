@@ -37,6 +37,12 @@ void* ItemType::getData() const {
     return data;
 }
 
+// Overload the equality operator ==
+bool ItemType::operator==(const ItemType& other) const {
+    // Compare the addresses stored in the data pointers
+    return this->data == other.data;
+}
+
 
 // Helper method to delete data
 void ItemType::deleteData() {

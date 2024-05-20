@@ -16,6 +16,8 @@ public:
     ~ItemType();
     // Assignment operator
     ItemType& operator=(const ItemType& other);
+    // Equality operator
+    bool operator==(const ItemType& other) const;
     // Set data method
     void setData(void* newData);
     // Get data method
