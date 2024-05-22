@@ -1,7 +1,7 @@
 #include "TreeNode.h"
 
 // Constructor
-TreeNode::TreeNode(const ItemType& item, TreeNode* leftNode, TreeNode* rightNode)
+TreeNode::TreeNode(const int& item, TreeNode* leftNode, TreeNode* rightNode)
         : data(item), left(leftNode), right(rightNode) {}
 
 // Assign left child
@@ -31,7 +31,7 @@ TreeNode* TreeNode::getRightChild() const {
 }
 
 // Get data
-ItemType TreeNode::getData() const {
+int TreeNode::getData() const {
     return data;
 }
 

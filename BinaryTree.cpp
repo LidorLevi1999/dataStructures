@@ -1,8 +1,9 @@
 #include <algorithm>
 #include "BinaryTree.h"
+#include <vector>
 
 // Constructor
-BinaryTree::BinaryTree(const ItemType& rootItem) {
+BinaryTree::BinaryTree(const int& rootItem) {
     root = new TreeNode(rootItem);
 }
 
@@ -17,7 +18,7 @@ TreeNode* BinaryTree::getRoot() const {
 }
 
 // Helper function to get the height of the tree recursively
-int BinaryTree::getTreeHeightRecursively(TreeNode* node) const {
+ int BinaryTree::getTreeHeightRecursively(TreeNode* node) {
     if (node == nullptr) {
         return -1; // Return -1 to count edges; return 0 to count nodes
     }
@@ -33,18 +34,18 @@ int BinaryTree::getTreeHeightRecursively() const {
 
 
 // Constructor to build tree from inOrder and preOrder arrays
-BinaryTree::BinaryTree(ItemType* inOrder, ItemType* preOrder, int arraysLength) {
+BinaryTree::BinaryTree(vector<int> inOrder, vector<int> preOrder, int arraysLength) {
     int preIndex = 0;
     root = buildTreeFromInPreOrder(inOrder, preOrder, 0, arraysLength - 1, preIndex, arraysLength);
 }
 
 
-TreeNode* BinaryTree::buildTreeFromInPreOrder(ItemType* inOrder, ItemType* preOrder, int inStart, int inEnd, int& preIndex, int arraysLength) {
+TreeNode* BinaryTree::buildTreeFromInPreOrder(vector<int> inOrder, vector<int> preOrder, int inStart, int inEnd, int& preIndex, int arraysLength) {
     if (preIndex >= arraysLength || inStart > inEnd) {
         return nullptr;
     }
 
-    ItemType rootData = preOrder[preIndex++];
+    int rootData = preOrder[preIndex++];
     TreeNode* node = new TreeNode(rootData);
 
     if (inStart == inEnd) {
@@ -71,4 +72,11 @@ TreeNode* BinaryTree::buildTreeFromInPreOrder(ItemType* inOrder, ItemType* preOr
 void BinaryTree::makeEmpty() {
     delete root; // Triggers recursive deletion of all nodes
     root = nullptr;
+}
+
+int BinaryTree::recursiveHeightCalc(vector<int> inOrder, vector<int> preOrder, int inStart, int inEnd, int& preIndex, int arraysLength){
+    TreeNode* tree = buildTreeFromInPreOrder(inOrder, preOrder, inStart, inEnd, preIndex, arraysLength);
+    int height = getTreeHeightRecursively(tree);
+    return height;
+
 }

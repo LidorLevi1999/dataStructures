@@ -2,21 +2,23 @@
 #define BINARYTREE_H
 
 #include "TreeNode.h"
+#include <vector>
+using namespace std;
 
 class BinaryTree {
 private:
     TreeNode* root;
     // Helper function to get the height of the tree recursively
-    int getTreeHeightRecursively(TreeNode* node) const;
+    static int getTreeHeightRecursively(TreeNode* node);
     // Helper function to build the tree recursively
-    TreeNode* buildTreeFromInPreOrder(ItemType* inOrder, ItemType* preOrder, int inStart, int inEnd, int& preIndex, int arraysLength);
+    static TreeNode* buildTreeFromInPreOrder(vector<int> inOrder, vector<int> preOrder, int inStart, int inEnd, int& preIndex, int arraysLength);
 
 public:
     // Constructor
-    BinaryTree(const ItemType& rootItem);
+    BinaryTree(const int& rootItem);
 
     // Constructor to build tree from inOrder and preOrder arrays
-    BinaryTree(ItemType* inOrder, ItemType* preOrder, int arraysLength);
+    BinaryTree(vector<int> inOrder, vector<int> preOrder, int arraysLength);
 
     // Destructor
     ~BinaryTree();
@@ -29,6 +31,8 @@ public:
 
     // Make the tree empty
     void makeEmpty();
+
+    static int recursiveHeightCalc(vector<int> inOrder, vector<int> preOrder, int inStart, int inEnd, int &preIndex, int arraysLength);
 };
 
 #endif // BINARYTREE_H

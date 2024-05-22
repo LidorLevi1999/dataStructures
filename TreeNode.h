@@ -5,12 +5,12 @@
 
 class TreeNode {
 public:
-    ItemType data;
+    int data;
     TreeNode* left;
     TreeNode* right;
 
     // Constructor
-    TreeNode(const ItemType& item, TreeNode* leftNode = nullptr, TreeNode* rightNode = nullptr);
+    TreeNode(const int& item, TreeNode* leftNode = nullptr, TreeNode* rightNode = nullptr);
 
     // Assign left child
     void assignLeft(TreeNode* leftNode);
@@ -25,7 +25,7 @@ public:
     TreeNode* getRightChild() const;
 
     // Get data
-    ItemType getData() const;
+    int getData() const;
 
     // Destructor to recursively delete child nodes
     ~TreeNode();
