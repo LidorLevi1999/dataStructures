@@ -1,8 +1,6 @@
 #ifndef TREENODE_H
 #define TREENODE_H
 
-#include "ItemType.h"
-
 class TreeNode {
 public:
     int data;

@@ -1,15 +1,9 @@
 #include <iostream>
 #include <vector>
-#include "ItemType.h"
 #include "BinaryTree.h"
 using namespace std;
 
 int main() {
-//    int* value = new int(42);
-//    ItemType item(value);
-//    int* retrievedValue = static_cast<int*>(item.getData());
-//    std::cout << "Stored value: " << *retrievedValue << std::endl;
-
     int n;
     cin >> n;
 
@@ -25,10 +19,15 @@ int main() {
     }
 
     int zero = 0;
-    int recursiveHeight = BinaryTree::recursiveHeightCalc(inorder, preorder, 0, n-1, zero, n);
+
+    TreeNode* tree = BinaryTree::buildTreeFromInPreOrder(inorder, preorder, 0, n-1, zero, n);
+
+
+    int recursiveHeight = BinaryTree::recursiveHeightCalc2(tree);
     cout << recursiveHeight << endl;
 
-
+    int nonRecursiveHeight = BinaryTree::nonRecursiveHeightCalc2(tree);
+    cout << nonRecursiveHeight << endl;
 
     return 0;
 }

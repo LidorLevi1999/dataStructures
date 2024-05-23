@@ -8,10 +8,15 @@ using namespace std;
 class BinaryTree {
 private:
     TreeNode* root;
-    // Helper function to get the height of the tree recursively
+
+    enum {
+        START,
+        AFTER_LEFT,
+        AFTER_RIGHT
+    };
+
     static int getTreeHeightRecursively(TreeNode* node);
-    // Helper function to build the tree recursively
-    static TreeNode* buildTreeFromInPreOrder(vector<int> inOrder, vector<int> preOrder, int inStart, int inEnd, int& preIndex, int arraysLength);
+    static int getTreeHeightNonRecursively(TreeNode *root);
 
 public:
     // Constructor
@@ -33,6 +38,15 @@ public:
     void makeEmpty();
 
     static int recursiveHeightCalc(vector<int> inOrder, vector<int> preOrder, int inStart, int inEnd, int &preIndex, int arraysLength);
+
+    static int nonRecursiveHeightCalc(vector<int> inOrder, vector<int> preOrder, int inStart, int inEnd, int &preIndex,
+                               int arraysLength);
+
+    static int nonRecursiveHeightCalc2(TreeNode *root);
+
+    static TreeNode* buildTreeFromInPreOrder(vector<int> inOrder, vector<int> preOrder, int inStart, int inEnd, int& preIndex, int arraysLength);
+
+    static int recursiveHeightCalc2(TreeNode* root);
 };
 
 #endif // BINARYTREE_H
