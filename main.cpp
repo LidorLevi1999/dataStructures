@@ -3,6 +3,9 @@
 #include "BinaryTree.h"
 using namespace std;
 
+
+//IDS : 207917980, 207002411
+
 int main() {
     int n;
     cin >> n;
@@ -18,14 +21,11 @@ int main() {
         cin >> inorder[i];
     }
 
-    int zero = 0;
-
-    TreeNode* tree = BinaryTree::buildTreeFromInPreOrder(inorder, preorder, 0, n-1, zero, n);
-
-    int recursiveHeight = BinaryTree::recursiveHeightCalc2(tree);
+    BinaryTree tree = BinaryTree(inorder, preorder, n);
+    int recursiveHeight = tree.recursiveHeightCalc();
     cout << "Tree height (recursive algorithm): " << recursiveHeight << endl;
 
-    int nonRecursiveHeight = BinaryTree::nonRecursiveHeightCalc2(tree);
+    int nonRecursiveHeight = tree.nonRecursiveHeightCalc();
     cout << "Tree height (iterative stack algorithm): " << nonRecursiveHeight << endl;
 
     return 0;

@@ -11,6 +11,7 @@ public:
     int rightHeight;
     int line;
 
+    //Constructor
     ItemType(TreeNode* n, int lh, int rh, int ln)
             : node(n), leftHeight(lh), rightHeight(rh), line(ln) {}
 };

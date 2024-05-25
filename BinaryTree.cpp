@@ -4,20 +4,12 @@
 #include "Stack.h"
 #include "ItemType.h"
 
-// Constructor
-BinaryTree::BinaryTree(const int& rootItem) {
-    root = new TreeNode(rootItem);
-}
 
 // Destructor
 BinaryTree::~BinaryTree() {
     makeEmpty();
 }
 
-// Get the root of the tree
-TreeNode* BinaryTree::getRoot() const {
-    return root;
-}
 
 // Helper function to get the height of the tree recursively
 int BinaryTree::getTreeHeightRecursively(TreeNode* node) {
@@ -29,11 +21,6 @@ int BinaryTree::getTreeHeightRecursively(TreeNode* node) {
     return 1 + std::max(leftHeight, rightHeight);
 }
 
-// Get the height of the tree recursively
-int BinaryTree::getTreeHeightRecursively() const {
-    return getTreeHeightRecursively(root);
-}
-
 
 // Constructor to build tree from inOrder and preOrder arrays
 BinaryTree::BinaryTree(vector<int> inOrder, vector<int> preOrder, int arraysLength) {
@@ -42,6 +29,7 @@ BinaryTree::BinaryTree(vector<int> inOrder, vector<int> preOrder, int arraysLeng
 }
 
 
+// Build tree from inOrder and preOrder arrays
 TreeNode* BinaryTree::buildTreeFromInPreOrder(vector<int> inOrder, vector<int> preOrder, int inStart, int inEnd, int& preIndex, int arraysLength) {
     if (preIndex >= arraysLength || inStart > inEnd) {
         return nullptr;
@@ -76,19 +64,14 @@ void BinaryTree::makeEmpty() {
     root = nullptr;
 }
 
-int BinaryTree::recursiveHeightCalc(vector<int> inOrder, vector<int> preOrder, int inStart, int inEnd, int& preIndex, int arraysLength){
-    TreeNode* tree = buildTreeFromInPreOrder(inOrder, preOrder, inStart, inEnd, preIndex, arraysLength);
-    int height = getTreeHeightRecursively(tree);
-    return height;
-}
-
-int BinaryTree::getTreeHeightNonRecursively(TreeNode* root) {
-    if (root == nullptr) {
+// Helper function to get the height of the tree non-recursively
+int BinaryTree::getTreeHeightNonRecursively(TreeNode* node) {
+    if (node == nullptr) {
         return -1; // Return -1 to count edges; return 0 to count nodes
     }
 
     Stack S;
-    S.Push(ItemType(root, -1, -1, START));
+    S.Push(ItemType(node, -1, -1, START));
     int returnValue = -1;
 
     while (!S.IsEmpty()) {
@@ -121,18 +104,12 @@ int BinaryTree::getTreeHeightNonRecursively(TreeNode* root) {
     return returnValue;
 }
 
-int BinaryTree::nonRecursiveHeightCalc(vector<int> inOrder, vector<int> preOrder, int inStart, int inEnd, int& preIndex, int arraysLength){
-    TreeNode* tree = buildTreeFromInPreOrder(inOrder, preOrder, inStart, inEnd, preIndex, arraysLength);
-    int height = getTreeHeightNonRecursively(tree);
-    return height;
+// Calculate the height of the tree non-recursively
+int BinaryTree::nonRecursiveHeightCalc() {
+    return getTreeHeightNonRecursively(root);
 }
 
-int BinaryTree::nonRecursiveHeightCalc2(TreeNode* root){
-    int height = getTreeHeightNonRecursively(root);
-    return height;
-}
-
-int BinaryTree::recursiveHeightCalc2(TreeNode* root){
-    int height = getTreeHeightRecursively(root);
-    return height;
+// Calculate the height of the tree recursively
+int BinaryTree::recursiveHeightCalc() {
+    return getTreeHeightRecursively(root);
 }

@@ -15,12 +15,13 @@ private:
         AFTER_RIGHT
     };
 
-    static int getTreeHeightRecursively(TreeNode* node);
-    static int getTreeHeightNonRecursively(TreeNode *root);
+    // Helper function to get the height of the tree recursively
+    int getTreeHeightRecursively(TreeNode* node);
+
+    // Helper function to get the height of the tree non-recursively
+    int getTreeHeightNonRecursively(TreeNode *node);
 
 public:
-    // Constructor
-    BinaryTree(const int& rootItem);
 
     // Constructor to build tree from inOrder and preOrder arrays
     BinaryTree(vector<int> inOrder, vector<int> preOrder, int arraysLength);
@@ -28,25 +29,17 @@ public:
     // Destructor
     ~BinaryTree();
 
-    // Get the root of the tree
-    TreeNode* getRoot() const;
-
-    // Get the height of the tree recursively
-    int getTreeHeightRecursively() const;
-
     // Make the tree empty
     void makeEmpty();
 
-    static int recursiveHeightCalc(vector<int> inOrder, vector<int> preOrder, int inStart, int inEnd, int &preIndex, int arraysLength);
+    // Calculate the height of the tree non-recursively
+    int nonRecursiveHeightCalc();
 
-    static int nonRecursiveHeightCalc(vector<int> inOrder, vector<int> preOrder, int inStart, int inEnd, int &preIndex,
-                                      int arraysLength);
+    // Build tree from inOrder and preOrder arrays
+    TreeNode* buildTreeFromInPreOrder(vector<int> inOrder, vector<int> preOrder, int inStart, int inEnd, int& preIndex, int arraysLength);
 
-    static int nonRecursiveHeightCalc2(TreeNode *root);
-
-    static TreeNode* buildTreeFromInPreOrder(vector<int> inOrder, vector<int> preOrder, int inStart, int inEnd, int& preIndex, int arraysLength);
-
-    static int recursiveHeightCalc2(TreeNode* root);
+    // Calculate the height of the tree recursively
+    int recursiveHeightCalc();
 };
 
 #endif // BINARYTREE_H
