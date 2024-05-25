@@ -30,17 +30,9 @@ public:
     bool IsEmpty() const;
     // Add an item to the front of the list
     void AddToFront(const ItemType& item);
-    // Add an item to the end of the list
-    void AddToEnd(const ItemType& item);
     // Remove and return the front item of the list
     ItemType RemoveFromFront();
-    // Remove and return the end item of the list
-    ItemType RemoveFromEnd();
-    // Get the front item without removing it
-    ItemType GetFront() const;
-    // Get the end item without removing it
-    ItemType GetEnd() const;
-    // Make the list empty
+    //Make the list empty
     void MakeEmpty();
 };
 

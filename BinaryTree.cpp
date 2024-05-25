@@ -20,7 +20,7 @@ TreeNode* BinaryTree::getRoot() const {
 }
 
 // Helper function to get the height of the tree recursively
- int BinaryTree::getTreeHeightRecursively(TreeNode* node) {
+int BinaryTree::getTreeHeightRecursively(TreeNode* node) {
     if (node == nullptr) {
         return -1; // Return -1 to count edges; return 0 to count nodes
     }

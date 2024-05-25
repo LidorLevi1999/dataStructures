@@ -22,12 +22,11 @@ int main() {
 
     TreeNode* tree = BinaryTree::buildTreeFromInPreOrder(inorder, preorder, 0, n-1, zero, n);
 
-
     int recursiveHeight = BinaryTree::recursiveHeightCalc2(tree);
-    cout << recursiveHeight << endl;
+    cout << "Tree height (recursive algorithm): " << recursiveHeight << endl;
 
     int nonRecursiveHeight = BinaryTree::nonRecursiveHeightCalc2(tree);
-    cout << nonRecursiveHeight << endl;
+    cout << "Tree height (iterative stack algorithm): " << nonRecursiveHeight << endl;
 
     return 0;
 }

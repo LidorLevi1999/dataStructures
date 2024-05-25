@@ -40,7 +40,7 @@ public:
     static int recursiveHeightCalc(vector<int> inOrder, vector<int> preOrder, int inStart, int inEnd, int &preIndex, int arraysLength);
 
     static int nonRecursiveHeightCalc(vector<int> inOrder, vector<int> preOrder, int inStart, int inEnd, int &preIndex,
-                               int arraysLength);
+                                      int arraysLength);
 
     static int nonRecursiveHeightCalc2(TreeNode *root);
 

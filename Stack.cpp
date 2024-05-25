@@ -1,11 +1,13 @@
 #include "Stack.h"
 
 // Constructor
-Stack::Stack() {}
+Stack::Stack() {
+    this->MakeEmpty();
+}
 
 // Destructor
 Stack::~Stack() {
-    MakeEmpty();
+    this->MakeEmpty();
 }
 
 // Check if the stack is empty
@@ -26,9 +28,4 @@ void Stack::Push(const ItemType& item) {
 // Pop an item from the stack
 ItemType Stack::Pop() {
     return list.RemoveFromFront();
-}
-
-// Get the top item from the stack
-ItemType Stack::Top() const {
-    return list.GetFront();
 }

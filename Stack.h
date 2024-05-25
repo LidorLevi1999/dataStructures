@@ -20,8 +20,6 @@ public:
     void Push(const ItemType& item);
     // Pop an item from the stack
     ItemType Pop();
-    // Get the top item from the stack
-    ItemType Top() const;
 };
 
 #endif // STACK_H

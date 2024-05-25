@@ -23,17 +23,6 @@ void LinkedList::AddToFront(const ItemType& item) {
     }
 }
 
-// Add an item to the end of the list
-void LinkedList::AddToEnd(const ItemType& item) {
-    Node* newNode = new Node(item, nullptr);
-    if (IsEmpty()) {
-        head = tail = newNode;
-    } else {
-        tail->next = newNode;
-        tail = newNode;
-    }
-}
-
 // Remove and return the front item of the list
 ItemType LinkedList::RemoveFromFront() {
     if (IsEmpty()) {
@@ -50,43 +39,7 @@ ItemType LinkedList::RemoveFromFront() {
     return item;
 }
 
-// Remove and return the end item of the list
-ItemType LinkedList::RemoveFromEnd() {
-    if (IsEmpty()) {
-        throw std::underflow_error("List is empty");
-    }
-    if (head == tail) { // If there is only one element in the list
-        ItemType item = head->data;
-        delete head;
-        head = tail = nullptr;
-        return item;
-    }
-    Node* current = head;
-    while (current->next != tail) {
-        current = current->next;
-    }
-    ItemType item = tail->data;
-    delete tail;
-    tail = current;
-    tail->next = nullptr;
-    return item;
-}
 
-// Get the front item without removing it
-ItemType LinkedList::GetFront() const {
-    if (IsEmpty()) {
-        throw std::underflow_error("List is empty");
-    }
-    return head->data;
-}
-
-// Get the end item without removing it
-ItemType LinkedList::GetEnd() const {
-    if (IsEmpty()) {
-        throw std::underflow_error("List is empty");
-    }
-    return tail->data;
-}
 
 // Make the list empty
 void LinkedList::MakeEmpty() {
